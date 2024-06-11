@@ -1,0 +1,2 @@
+etc/nginx/conf.d/localhost.crt
+etc/nginx/conf.d/localhost.key

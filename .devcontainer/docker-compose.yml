@@ -1,0 +1,24 @@
+version: "3"
+services:
+  workspace:
+    build:
+      context: ./workspace/docker
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+    tty: true
+    stdin_open: true
+  httpd:
+    image: nginx:1.27
+    ports:
+      - "127.0.0.1:8080:80"
+      - "127.0.0.1:8443:443"
+    volumes:
+      - type: bind
+        source: ../public
+        target: /usr/share/nginx/html
+      - type: bind
+        source: ../etc/nginx
+        target: /etc/nginx
